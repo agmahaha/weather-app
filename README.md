@@ -151,14 +151,7 @@ You can optionally open a Pull Request to your fork’s `main` branch if you'd l
 
 ## 🌐 Deployment (Free)
 
-After you're done, you can deploy your app for free using one of these platforms:
-
-### 🟣 [Vercel](https://vercel.com)
-
-1. Go to [https://vercel.com](https://vercel.com)
-2. Log in with your GitHub account
-3. Import your forked repo and follow the setup prompts
-4. Share your deployment URL with your mentor
+After you're done, you can deploy your app for free these platform:
 
 ### 🟢 [Netlify](https://netlify.com)
 
@@ -168,6 +161,10 @@ After you're done, you can deploy your app for free using one of these platforms
 4. Deploy and share your link
 
 All deployed links will be compiled in a central list so you can view the work of your peers.
+
+### 🌟 Sample Deployed App
+
+You can view a sample deployment of this project here: [Sample Weather App](https://effervescent-frangipane-8af6df.netlify.app/home)
 
 ---
 
