@@ -4,13 +4,30 @@ Welcome to the team! 🎉
 
 This simple Weather App is your first hands-on task to help you understand our team's workflow, code style, and project structure. You'll use an actual weather API, set up a service, and build a small UI to display weather data.
 
+Each hire will work on their own fork of this repository. Once you're done, you'll deploy your version so others can view your work.
+
+---
+
+## 🎨 Design Flexibility & Key Feature
+
+You are free to decide the overall design and user experience of your Weather App! Feel free to choose your own layout, colors, and UI elements to make the app your own.
+
+**However, your app must include the following key features:**
+
+- **Recent Searches:** Display a list of recently searched cities for quick access.
+- **Weather Details:** Show additional weather details such as humidity, wind speed, or weather icons.
+- **Unit Toggle:** Allow users to switch between Celsius and Fahrenheit.
+- **Responsive Design:** Ensure the app looks good on both desktop and mobile devices.
+
+Feel free to add more features if you like!
+
 ---
 
 ## 📋 Objectives
 
 - Understand how we structure projects
 - Learn how to use services for data fetching
-- Practice using GitHub workflow (branches, PRs, commits)
+- Practice using GitHub workflow (forks, branches, PRs, commits)
 - Learn our basic coding standards and practices
 
 ---
@@ -18,28 +35,34 @@ This simple Weather App is your first hands-on task to help you understand our t
 ## 🛠️ Prerequisites
 
 - Node.js (version X.X.X or higher)
-- Angular CLI / React CLI / Vue CLI (choose based on your stack)
+- Angular CLI
 - Git
-- A code editor (VS Code preferred)
+- VS Code
 
 ---
 
 ## 🚀 Getting Started
 
-### 1. Clone the Repository
+### 1. Fork the Repository
+
+Go to the original repo: [https://github.com/marhano/weather-app](https://github.com/your-org/weather-onboarding-app)
+
+Click the **Fork** button at the top right to create your own copy.
+
+### 2. Clone Your Fork
 
 ```bash
-git clone https://github.com/your-org/weather-onboarding-app.git
-cd weather-onboarding-app
+git clone https://github.com/your-username/weather-app.git
+cd weather-app
 ```
 
-### 2. Install Dependencies
+### 3. Install Dependencies
 
 ```bash
 npm install
 ```
 
-### 3. Run the App
+### 4. Run the App
 
 ```bash
 npm start
@@ -58,9 +81,11 @@ src/
 │   ├── services/
 │   │   └── weather.service.ts    # Example service to fetch weather
 │   ├── components/
-│   │   └── weather-card/         # Component to display weather
+│   │   └── sample-card/         # Component to display weather
 │   ├── models/
 │   │   └── weather.model.ts      # Interface/type for weather data
+│   ├── interfaces/
+│   │   └── weather.interface.ts   # Interface for weather service
 │   └── app.component.ts
 ```
 
@@ -81,6 +106,7 @@ Sign up and get your API key here: https://home.openweathermap.org/api_keys
 export const environment = {
   production: false,
   weatherApiKey: 'YOUR_API_KEY_HERE',
+  weatherBaseUrl: 'https://api.openweathermap.org/data/2.5/weather',
 };
 ```
 
@@ -90,7 +116,7 @@ export const environment = {
 
 ### ✅ Step 1: Review the weather service
 
-- Look into `weather.service.ts` to see how we make HTTP requests
+- Look into `weather.ts` to see how we make HTTP requests
 - Understand how services are injected into components
 
 ### ✅ Step 2: Create a new component
@@ -101,10 +127,10 @@ export const environment = {
 
 ### ✅ Step 3: Push your work
 
-1. Create your own branch
+1. Create a branch
 
 ```bash
-git checkout -b your-name/feature/weather-search
+git checkout -b feature/weather-search
 ```
 
 2. Commit your changes
@@ -113,13 +139,35 @@ git checkout -b your-name/feature/weather-search
 git commit -m "feat: add weather search component"
 ```
 
-3. Push and open a Pull Request
+3. Push to your fork
 
 ```bash
-git push origin your-name/feature/weather-search
+git push origin feature/weather-search
 ```
 
-Go to GitHub and open a PR from your branch to `main`.
+You can optionally open a Pull Request to your fork’s `main` branch if you'd like feedback.
+
+---
+
+## 🌐 Deployment (Free)
+
+After you're done, you can deploy your app for free using one of these platforms:
+
+### 🟣 [Vercel](https://vercel.com)
+
+1. Go to [https://vercel.com](https://vercel.com)
+2. Log in with your GitHub account
+3. Import your forked repo and follow the setup prompts
+4. Share your deployment URL with your mentor
+
+### 🟢 [Netlify](https://netlify.com)
+
+1. Go to [https://netlify.com](https://netlify.com)
+2. Connect your GitHub and import your repo
+3. Set build command (`npm run build`) and publish directory (`dist` for Angular)
+4. Deploy and share your link
+
+All deployed links will be compiled in a central list so you can view the work of your peers.
 
 ---
 
@@ -135,9 +183,9 @@ Go to GitHub and open a PR from your branch to `main`.
 
 After you're done:
 
-- Let your mentor/reviewer know your PR is ready
-- You'll get feedback and tips on how to improve
-- Once approved, your PR will be merged
+- Submit your deployed URL to your onboarding reviewer
+- Review a peer’s project and leave feedback
+- Look forward to the next task 🎯
 
 ---
 
