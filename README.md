@@ -1,59 +1,153 @@
-# WeatherApp
+# 🌤️ Weather App Onboarding Project
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.2.
+Welcome to the team! 🎉
 
-## Development server
+This simple Weather App is your first hands-on task to help you understand our team's workflow, code style, and project structure. You'll use an actual weather API, set up a service, and build a small UI to display weather data.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+## 📋 Objectives
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Understand how we structure projects
+- Learn how to use services for data fetching
+- Practice using GitHub workflow (branches, PRs, commits)
+- Learn our basic coding standards and practices
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🛠️ Prerequisites
 
-```bash
-ng generate component component-name
-```
+- Node.js (version X.X.X or higher)
+- Angular CLI / React CLI / Vue CLI (choose based on your stack)
+- Git
+- A code editor (VS Code preferred)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+## 🚀 Getting Started
 
-## Building
-
-To build the project run:
+### 1. Clone the Repository
 
 ```bash
-ng build
+git clone https://github.com/your-org/weather-onboarding-app.git
+cd weather-onboarding-app
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### 2. Install Dependencies
 
 ```bash
-ng test
+npm install
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+### 3. Run the App
 
 ```bash
-ng e2e
+npm start
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+> The app should now be running on `http://localhost:4200` (for Angular) or your framework's default port.
 
-## Additional Resources
+---
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 📁 Project Structure
+
+```bash
+src/
+│
+├── app/
+│   ├── services/
+│   │   └── weather.service.ts    # Example service to fetch weather
+│   ├── components/
+│   │   └── weather-card/         # Component to display weather
+│   ├── models/
+│   │   └── weather.model.ts      # Interface/type for weather data
+│   └── app.component.ts
+```
+
+---
+
+## 🔐 API Setup
+
+We use [OpenWeatherMap API](https://openweathermap.org/api).
+
+### 1. Create an account and get your API key
+
+Sign up and get your API key here: https://home.openweathermap.org/api_keys
+
+### 2. Add your API key to environment file
+
+```ts
+// src/environments/environment.ts
+export const environment = {
+  production: false,
+  weatherApiKey: 'YOUR_API_KEY_HERE',
+};
+```
+
+---
+
+## 📦 Tasks
+
+### ✅ Step 1: Review the weather service
+
+- Look into `weather.service.ts` to see how we make HTTP requests
+- Understand how services are injected into components
+
+### ✅ Step 2: Create a new component
+
+- Create a `weather-search` component where users can search by city
+- Bind the input to the service call
+- Display the result using the `weather-card` component
+
+### ✅ Step 3: Push your work
+
+1. Create your own branch
+
+```bash
+git checkout -b your-name/feature/weather-search
+```
+
+2. Commit your changes
+
+```bash
+git commit -m "feat: add weather search component"
+```
+
+3. Push and open a Pull Request
+
+```bash
+git push origin your-name/feature/weather-search
+```
+
+Go to GitHub and open a PR from your branch to `main`.
+
+---
+
+## 🧪 Bonus Challenges
+
+- Add error handling (e.g., invalid city)
+- Display loading state while fetching data
+- Add unit tests for the service
+
+---
+
+## 🧭 Next Steps
+
+After you're done:
+
+- Let your mentor/reviewer know your PR is ready
+- You'll get feedback and tips on how to improve
+- Once approved, your PR will be merged
+
+---
+
+## 🤝 Support
+
+If you're stuck or have any questions, feel free to:
+
+- Message your assigned buddy
+- Ask in the #onboarding channel
+
+---
+
+Welcome again! We’re excited to have you on board 🚀
