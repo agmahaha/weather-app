@@ -168,27 +168,21 @@ We maintain a central collection of all deployed Weather Apps at [https://marhan
 
 1. Make sure your app is deployed and accessible via a public URL (e.g., Netlify, Vercel, or GitHub Pages).
 2. Fork this repository (if you haven't already).
-3. Check out the `gh-pages` branch:
+3. Get the latest branches from the main repo.
 
    ```bash
-   git fetch origin
-   git checkout gh-pages
+   git remote add upstream https://github.com/marhano/weather-app.git
+   git fetch upstream
    ```
-
-4. Open the `index.html` file in the root of the repo (on the `gh-pages` branch).
-5. Add your app to the list! You can freely design how your preview will look.
+   
+4. Create a branch base on the `gh-pages` branch of the main repo:
+5. Open the `index.html` file in the root of the repo (on the `gh-pages` branch).
+6. Add your app to the list! You can freely design how your preview will look.
 
    Place your entry below the last one in the list.
 
-6. Commit your changes:
-
-   ```bash
-   git add index.html
-   git commit -m "Add [your name/username]'s Weather App to collection"
-   git push origin gh-pages
-   ```
-
-7. Open a Pull Request **to the `gh-pages` branch** of the main repository.
+7. Commit and push your changes:
+8. Open a Pull Request **to the `gh-pages` branch** of the main repository.
 
 Once merged, your app will appear in the central collection at [https://marhano.github.io/weather-app/](https://marhano.github.io/weather-app/) for everyone to see!
 
