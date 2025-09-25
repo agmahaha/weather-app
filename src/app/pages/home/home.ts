@@ -3,14 +3,15 @@ import { Weather } from '../../services/weather/weather';
 import { SampleCard } from '../../components/sample-card/sample-card';
 import { WeatherCard } from '../../components/weather-card/weather-card';
 import { WeatherSearch } from "../../components/weather-search/weather-search";
-import { globalSearch } from '../../signal';
+import { globalSearch, globalUnit } from '../../signal';
+import { CityHistory } from "../../components/city-history/city-history";
 
 @Component({
   selector: 'app-home',
   imports: [
-    SampleCard,
     WeatherCard,
-    WeatherSearch
+    WeatherSearch,
+    CityHistory
 ],
   templateUrl: './home.html',
   styleUrl: './home.css'
@@ -23,7 +24,7 @@ export class Home {
   constructor() {
     effect(() => {
       globalSearch();
-      // console.log("home2: " + searchValue);
+      globalUnit();
       this.weatherDataResource.reload();
     })
   }

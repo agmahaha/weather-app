@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'tailwindcss';
+@import 'tailwindcss-primeui';
+@import 'primeicons/primeicons.css';
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  @apply min-h-screen bg-gradient-to-b from-blue-100 via-blue-200 to-blue-300 bg-fixed;
+}

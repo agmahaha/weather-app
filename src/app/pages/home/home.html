@@ -5,7 +5,21 @@ Dear new hire, we're excited to have you on board. Please make sure to read the 
 -->
 <!-- You can freely remove the <app-sample-card> and create your 
     own components for displaying weather data. -->
-   
-<app-weather-search></app-weather-search>
-<app-weather-card></app-weather-card>
-<app-sample-card [weatherData]="weatherDataResource.value()"></app-sample-card>
+
+
+<div class="gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-6 gap-6">
+        <div class="col-span-6 md:col-span-4">
+            <app-weather-search/>
+        </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-6 gap-6">
+        <div class="col-span-6 md:col-span-4 p-4 flex justify-center">
+            <app-weather-card [weatherData]="weatherDataResource.value()"/>
+        </div>
+        <div class="col-span-6 md:col-span-2 p-4">
+            <app-city-history/>
+        </div>
+    </div>
+</div>
+

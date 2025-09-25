@@ -1,1 +1,14 @@
-<p>weather-card works!</p>
+<div class="flex flex-col md:flex-row">
+    <div class="m-2 ">
+        <div class="card flex flex-col items-center text-center p-4">
+            <div class="font-semibold text-xl mb-4">{{ weatherData()?.name }}</div>
+            <img 
+                [src]="'https://openweathermap.org/img/wn/' + weatherData()?.weather?.[0]?.icon + '@2x.png'" 
+                [alt]="weatherData()?.weather?.[0]?.description"
+                />
+            <p>{{ weatherData()?.main?.temp }} {{unitSymbol}}</p>
+            <p><strong>Humidity:</strong> {{ weatherData()?.main?.humidity }}%</p>
+            <p><strong>Wind Speed:</strong> {{ weatherData()?.wind?.speed }} {{speedSymbol}}</p>
+        </div>
+    </div>
+</div>

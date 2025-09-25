@@ -1,4 +1,25 @@
-<p-inputgroup>
-    <p-button type="button" (click)="setCity(cityName.value)" label="Search" />
-    <input type = "text" pInputText placeholder="Input City" #cityName/>
-</p-inputgroup>
+<div class="card m-2 sm:w-screen md:w-full">
+    <div class=" card box-border bg-white rounded-xl p-2 shadow-sm hover:shadow-md transition-shadow flex flex-row items-center">
+        <p-button class="mr-1" type="button" (click)="setCity(cityName.value)">
+            <i class="pi pi-search"></i>
+        </p-button> 
+            <input pInputText placeholder="Input City" 
+                #cityName (keyup.enter)="setCity(cityName.value)" 
+                class ="h-8 w-full min-w-0 px-3 text-base border border-gray-400 rounded" />
+        <div class="ml-8 hidden md:block">
+            <p-selectbutton 
+            [(ngModel)]="selectedButton" 
+            (ngModelChange)="onUnitChange($event)"
+            [options]="selectButtonValues" optionLabel="name" [unselectable]="true"
+            class=""/> 
+        </div>      
+    </div>  
+    <div class="block md:hidden mt-2 flex justify-center">
+        <p-selectbutton 
+        [(ngModel)]="selectedButton" 
+        (ngModelChange)="onUnitChange($event)"
+        [options]="selectButtonValues" 
+        optionLabel="name" 
+        [unselectable]="true"/>
+    </div>
+</div>

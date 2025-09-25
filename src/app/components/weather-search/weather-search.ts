@@ -1,31 +1,56 @@
-import { Component, input, signal} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { ButtonModule } from 'primeng/button';
-import { globalSearch } from '../../signal';
+import { globalSearch, globalStore, globalUnit } from '../../signal';
+import { ToolbarModule } from 'primeng/toolbar';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { SplitButtonModule } from 'primeng/splitbutton';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-weather-search',
   imports: [
     InputGroupModule, 
     InputGroupAddonModule, 
-    ButtonModule],
+    ButtonModule,
+    ToolbarModule,
+    IconFieldModule,
+    InputIconModule,
+    SelectButtonModule,
+    SplitButtonModule,
+    FormsModule],
   templateUrl: './weather-search.html',
   styleUrl: './weather-search.css'
 })
 export class WeatherSearch {
-  menu: any;
-
-  // ngOnInit() : void {
-  //   console.log(globalSearch());
-  // }
-
+  menu:any
   setCity(cityVal: string){
-    if(!cityVal){
+    if(!cityVal)
       return;
-    }
     
     globalSearch.set(cityVal);
-    //console.log("save: " + globalSearch());
+    
+
+    for (const city of globalStore()){
+      if(city == cityVal)
+        return;
+    }
+      
+    globalStore.update(prev => [...prev, cityVal]);
+    console.log(globalStore());
+    
   }
+
+  onUnitChange(value: any) {
+  this.selectedButton = value;
+  globalUnit.set(value.value);  
+}
+
+  
+  selectButtonValues: any = [{ name: 'Celsius', value: 'C'}, { name: 'Farenheit', value: 'F' }, { name: 'Kelvin', value:'K' } ];
+  selectedButton = this.selectButtonValues[0];
 }
