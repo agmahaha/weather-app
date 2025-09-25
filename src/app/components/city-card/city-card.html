@@ -1,0 +1,8 @@
+<div class="card box-border bg-white rounded-xl p-2 shadow-sm hover:shadow-md transition-shadow flex flex-row items-center">
+    <div class="font-semibold text-l mb-4">{{weatherDataResource.value()?.name}}</div>
+    <p>{{ weatherDataResource.value()?.main?.temp }} °</p>
+    <img 
+                [src]="'https://openweathermap.org/img/wn/' + weatherDataResource.value()?.weather?.[0]?.icon + '@2x.png'" 
+                [alt]="weatherDataResource.value()?.weather?.[0]?.description"
+                />
+</div>

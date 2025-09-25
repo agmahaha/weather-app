@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { effect, inject, Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { lastValueFrom } from 'rxjs';
 import { IWeatherService } from '../../interfaces/weather.interface';
 import { IWeather } from '../../models/weather.model';
-import { globalSearch, globalUnit } from '../../signal';
+import { globalUnit } from '../../signal';
 
 @Injectable({
   providedIn: 'root'

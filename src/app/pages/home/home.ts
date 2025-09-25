@@ -1,9 +1,8 @@
 import { Component, inject, resource, effect } from '@angular/core';
 import { Weather } from '../../services/weather/weather';
-import { SampleCard } from '../../components/sample-card/sample-card';
 import { WeatherCard } from '../../components/weather-card/weather-card';
 import { WeatherSearch } from "../../components/weather-search/weather-search";
-import { globalSearch, globalUnit } from '../../signal';
+import { globalSearch, globalStore, globalUnit } from '../../signal';
 import { CityHistory } from "../../components/city-history/city-history";
 
 @Component({
@@ -25,6 +24,7 @@ export class Home {
     effect(() => {
       globalSearch();
       globalUnit();
+      globalStore();
       this.weatherDataResource.reload();
     })
   }
@@ -34,6 +34,4 @@ export class Home {
       return this.weatherService.getWeather(globalSearch());
     }
   });
-
-  
 }

@@ -27,7 +27,6 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './weather-search.css'
 })
 export class WeatherSearch {
-  menu:any
   setCity(cityVal: string){
     if(!cityVal)
       return;
@@ -41,7 +40,6 @@ export class WeatherSearch {
     }
       
     globalStore.update(prev => [...prev, cityVal]);
-    console.log(globalStore());
     
   }
 
