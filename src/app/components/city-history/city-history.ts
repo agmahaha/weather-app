@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { globalStore } from '../../signal';
 import { CityCard } from '../city-card/city-card';
+import { IWeather } from '../../models/weather.model';
 
 @Component({
   selector: 'app-city-history',
@@ -10,4 +11,5 @@ import { CityCard } from '../city-card/city-card';
 })
 export class CityHistory {
   readonly cityStore = globalStore
+  readonly weatherCache = input<Record<string, IWeather>>({});
 }

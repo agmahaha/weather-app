@@ -15,10 +15,24 @@ Dear new hire, we're excited to have you on board. Please make sure to read the 
     </div>
     <div class="grid grid-cols-1 md:grid-cols-6 gap-6">
         <div class="col-span-6 md:col-span-4 p-4 flex justify-center">
-            <app-weather-card [weatherData]="weatherDataResource.value()"/>
+            @if (weatherDataResource.isLoading()) {
+                <div class="text-blue-500 font-semibold">
+                    🔄 Loading weather data...
+                </div>
+            } @else if (weatherData()?.error) {
+                <div class="text-red-500 font-semibold">
+                    ⚠️ {{ weatherData().message }}
+                </div>
+            } @else if (weatherData()) {
+                <app-weather-card [weatherData]="weatherData()" />
+            } @else {
+                <div class="text-gray-500">
+                    Search for a city to see weather data
+                </div>
+            }
         </div>
         <div class="col-span-6 md:col-span-2 p-4">
-            <app-city-history/>
+            <app-city-history [weatherCache]="weatherCache()"/>
         </div>
     </div>
 </div>

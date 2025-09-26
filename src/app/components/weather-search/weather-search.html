@@ -1,11 +1,14 @@
 <div class="card m-2 sm:w-screen md:w-full">
     <div class=" card box-border bg-white rounded-xl p-2 shadow-sm hover:shadow-md transition-shadow flex flex-row items-center">
-        <p-button class="mr-1" type="button" (click)="setCity(cityName.value)">
+        <p-button class="mr-1 " tabindex="-1" type="button" (click)="setCity(cityName.value); cityName.value=''">
             <i class="pi pi-search"></i>
         </p-button> 
-            <input pInputText placeholder="Input City" 
-                #cityName (keyup.enter)="setCity(cityName.value)" 
-                class ="h-8 w-full min-w-0 px-3 text-base border border-gray-400 rounded" />
+            <input pInputText placeholder="Input City"
+                #cityName
+                (focus)="cityName.placeholder=''" 
+                (blur)="cityName.placeholder='Input City'"   
+                (keyup.enter)="setCity(cityName.value); cityName.value=''" 
+                class ="h-8 w-full min-w-0 px-3 text-base border border-gray-400 rounded"/>
         <div class="ml-8 hidden md:block">
             <p-selectbutton 
             [(ngModel)]="selectedButton" 

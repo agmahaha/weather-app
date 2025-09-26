@@ -3,8 +3,9 @@
     @if (cityStore(); as store){
         @if (store.length > 0){
             @for(city of store; track city; let i = $index){
-                <app-city-card [cityVal] = "city"/>
-                <p></p>
+                <app-city-card 
+                    [cityVal]="city" 
+                    [cityInfo]="weatherCache()[city]"/>
             }
         } @else {
             <p class="text-gray-500 italic">No recent cities</p>

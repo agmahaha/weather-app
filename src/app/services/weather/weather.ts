@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
-import { lastValueFrom } from 'rxjs';
+import { lastValueFrom, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators'
 import { IWeatherService } from '../../interfaces/weather.interface';
 import { IWeather } from '../../models/weather.model';
 import { globalUnit } from '../../signal';
@@ -15,19 +16,21 @@ export class Weather implements IWeatherService {
   private readonly apiKey = environment.weatherApiKey;
   private readonly baseUrl = environment.weatherBaseUrl;
   private unitMeas = "&units=metric";
-  
+
 
   getWeather(city: string): Promise<IWeather> {
-    if(globalUnit() == 'C') {
+    if (globalUnit() == 'C') {
       this.unitMeas = "&units=metric";
     }
-    else if(globalUnit() == 'F'){
+    else if (globalUnit() == 'F') {
       this.unitMeas = "&units=imperial";
     }
-    else{
+    else {
       this.unitMeas = "";
     }
-    return lastValueFrom(this.http.get<IWeather>(`${this.baseUrl}?q=${city}&appid=${this.apiKey}${this.unitMeas}`));
+    return lastValueFrom(
+      this.http.get<IWeather>(`${this.baseUrl}?q=${city}&appid=${this.apiKey}${this.unitMeas}`)
+    );
   }
 
 }

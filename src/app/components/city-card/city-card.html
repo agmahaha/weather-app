@@ -1,8 +1,28 @@
-<div class="card box-border bg-white rounded-xl p-2 shadow-sm hover:shadow-md transition-shadow flex flex-row items-center">
-    <div class="font-semibold text-l mb-4">{{weatherDataResource.value()?.name}}</div>
-    <p>{{ weatherDataResource.value()?.main?.temp }} °</p>
-    <img 
-                [src]="'https://openweathermap.org/img/wn/' + weatherDataResource.value()?.weather?.[0]?.icon + '@2x.png'" 
-                [alt]="weatherDataResource.value()?.weather?.[0]?.description"
+<div class="bg-blue-100 rounded-lg p-4 mb-2 hover:bg-blue-200 transition-colors cursor-pointer">
+    @if (cityInfo(); as weather) {
+        <div class="flex justify-between items-center">
+            <div>
+                <h3 class="font-medium text-gray-900">{{ weather.name }}</h3>
+                <img 
+                [src]="'https://openweathermap.org/img/wn/' + weather.weather[0].icon + '@2x.png'" 
+                [alt]="weather.weather[0].description"
+                class="w-18 h-18"
                 />
+            </div>
+            <div class="text-right">
+                <div class="text-lg font-semibold text-gray-900">{{ weather.main.temp }}°</div>
+                <div class="text-xs text-gray-500">{{ weather.main.feels_like }}° feels like</div>
+            </div>
+        </div>
+    } @else {
+        <div class="flex justify-between items-center">
+            <div>
+                <h3 class="font-medium text-gray-900">{{ cityVal() }}</h3>
+                <p class="text-sm text-gray-400">Loading...</p>
+            </div>
+            <div class="text-right">
+                <div class="w-8 h-8 bg-gray-200 rounded animate-pulse"></div>
+            </div>
+        </div>
+    }
 </div>
