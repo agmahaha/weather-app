@@ -52,7 +52,7 @@ export class Home {
       const isLoading = this.isLoading();
       
       if (weatherData && !hasError && !isLoading ) {
-        const cityName = globalSearch();
+        const cityName = globalSearch().toLowerCase();
         const currentStore = globalStore();
 
         if (cityName && !currentStore.includes(cityName) && !this.weatherDataResource.value()?.error) {
