@@ -2,7 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { ButtonModule } from 'primeng/button';
-import { globalSearch, globalUnit } from '../../signal';
+import { globalSearch, globalUnit, globalStore } from '../../signal';
 import { ToolbarModule } from 'primeng/toolbar';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
@@ -30,6 +30,11 @@ export class WeatherSearch {
 
   setCity(cityVal: string){
     globalSearch.set(cityVal);
+    const cityName = globalSearch().toLowerCase()
+    if(globalStore().includes(cityName)){
+      globalStore.update(prev => prev.filter(city => city != cityName));
+      globalStore.update(prev => [cityName, ...prev].splice(0,3));
+    }
   }
 
   onUnitChange(value: any) {

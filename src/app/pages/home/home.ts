@@ -50,13 +50,13 @@ export class Home {
       const weatherData = this.weatherData();
       const hasError = this.hasError();
       const isLoading = this.isLoading();
-      
-      if (weatherData && !hasError && !isLoading ) {
+
+      if (weatherData && !hasError && !isLoading) {
         const cityName = globalSearch().toLowerCase();
         const currentStore = globalStore();
-        
+
         if (cityName && !currentStore.includes(cityName) && !this.weatherDataResource.value()?.error) {
-          globalStore.update(prev => [...prev, cityName]);
+          globalStore.update(prev => [cityName, ...prev].slice(0,3));
         }
 
         if (cityName) {
@@ -113,14 +113,14 @@ export class Home {
       try {
         return await this.weatherService.getWeather(city);
       } catch (err: any) {
-          return {
-        error: true,
-        message: err.status === 404
-          ? `City "${city}" not found`
-          : err.status === 0
-            ? `Network error`
-            : `Unexpected error: ${err.message || err}`
-      } as any;
+        return {
+          error: true,
+          message: err.status === 404
+            ? `City "${city}" not found`
+            : err.status === 0
+              ? `Network error`
+              : `Unexpected error: ${err.message || err}`
+        } as any;
       }
     },
   });
