@@ -8,25 +8,25 @@ Dear new hire, we're excited to have you on board. Please make sure to read the 
 
 
 <div class="gap-4">
-    <div class="grid grid-cols-1 md:grid-cols-6 gap-6">
+    <div class="grid grid-cols-6 gap-6">
         <div class="col-span-6 md:col-span-4">
             <app-weather-search/>
         </div>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-6 gap-6">
-        <div class="col-span-6 md:col-span-4 p-4 flex justify-center">
+    <div class="grid grid-cols-6 gap-6">
+        <div class="col-span-6 md:col-span-4 p-8 m-2 flex justify-center">
             @if (weatherDataResource.isLoading()) {
-                <div class="text-blue-500 font-semibold">
+                <div class="text-blue-500 font-semibold mt-20 mb-20">
                     🔄 Loading weather data...
                 </div>
             } @else if (weatherData()?.error) {
-                <div class="text-red-500 font-semibold">
+                <div class="text-red-500 font-semibold mt-20 mb-20">
                     ⚠️ {{ weatherData().message }}
                 </div>
             } @else if (weatherData()) {
                 <app-weather-card [weatherData]="weatherData()" />
             } @else {
-                <div class="text-gray-500">
+                <div class="text-gray-500 mt-20 mb-20">
                     Search for a city to see weather data
                 </div>
             }

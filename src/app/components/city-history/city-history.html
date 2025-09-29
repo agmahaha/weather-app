@@ -1,5 +1,8 @@
 <div class="card box-border bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
-    <div class="font-semibold text-xl mb-4">Recent Cities</div>
+    <div class="flex justify-between items-center mb-4 ">
+        <div class="font-semibold text-xl">Recent Cities</div>
+        <p-button (onClick)="clearHistory()" label="Clear" severity="secondary" text/>
+    </div>
     @if (cityStore(); as store){
         @if (store.length > 0){
             @for(city of store; track city; let i = $index){

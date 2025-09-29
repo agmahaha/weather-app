@@ -54,7 +54,7 @@ export class Home {
       if (weatherData && !hasError && !isLoading ) {
         const cityName = globalSearch().toLowerCase();
         const currentStore = globalStore();
-
+        
         if (cityName && !currentStore.includes(cityName) && !this.weatherDataResource.value()?.error) {
           globalStore.update(prev => [...prev, cityName]);
         }
@@ -83,7 +83,7 @@ export class Home {
             this.loadWeatherForCity(city);
           }
         });
-      }, 0);
+      }, 100);
     });
   }
 
