@@ -8,6 +8,13 @@ html, body {
   margin: 0;
 }
 
-body {
-  @apply min-h-screen bg-gradient-to-b from-blue-100 via-blue-200 to-blue-300 bg-fixed;
+.sunny-bg {
+  @apply min-h-screen bg-gradient-to-b from-yellow-200 via-yellow-300 to-blue-400 bg-fixed;
 }
+
+.cloudy-bg {
+  @apply min-h-screen bg-gradient-to-b from-gray-300 via-blue-200 to-gray-400 bg-fixed;
+}
+
+
+

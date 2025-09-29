@@ -2,16 +2,18 @@ import { Component, inject, resource, effect, signal, computed } from '@angular/
 import { Weather } from '../../services/weather/weather';
 import { WeatherCard } from '../../components/weather-card/weather-card';
 import { WeatherSearch } from "../../components/weather-search/weather-search";
-import { globalSearch, globalStore, globalUnit } from '../../signal';
+import { globalSearch, globalStore, globalUnit, backgroundMode } from '../../signal';
 import { CityHistory } from "../../components/city-history/city-history";
 import { IWeather } from '../../models/weather.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   imports: [
     WeatherCard,
     WeatherSearch,
-    CityHistory
+    CityHistory,
+    CommonModule,
   ],
   templateUrl: './home.html',
   styleUrl: './home.css'
@@ -20,6 +22,7 @@ export class Home {
   //injector
   private readonly weatherService = inject(Weather);
   public readonly weatherCache = signal<Record<string, IWeather>>({});
+  public backgroundMode = backgroundMode;
 
   public readonly isLoading = computed(() => this.weatherDataResource.isLoading());
   public readonly hasError = computed(() => !!this.weatherDataResource.error());
@@ -50,13 +53,21 @@ export class Home {
       const weatherData = this.weatherData();
       const hasError = this.hasError();
       const isLoading = this.isLoading();
-
+      
       if (weatherData && !hasError && !isLoading) {
+
+        const desc = weatherData.weather[0].description;
+
+        if (desc.includes('cloud') || desc.includes('rain') || desc.includes('storm') ||desc.includes('night')){
+          this.backgroundMode.set('dark');
+        } else {
+          this.backgroundMode.set('light');
+        }
         const cityName = globalSearch().toLowerCase();
         const currentStore = globalStore();
-
+        console.log(weatherData.weather[0].description)
         if (cityName && !currentStore.includes(cityName) && !this.weatherDataResource.value()?.error) {
-          globalStore.update(prev => [cityName, ...prev].slice(0,3));
+          globalStore.update(prev => [cityName, ...prev].slice(0, 3));
         }
 
         if (cityName) {
@@ -124,5 +135,4 @@ export class Home {
       }
     },
   });
-
 }
