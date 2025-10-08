@@ -8,6 +8,7 @@ html, body {
   margin: 0;
 }
 
+
 .sunny-bg {
   @apply min-h-screen bg-gradient-to-b from-blue-400 via-blue-200 to-yellow-200 bg-fixed;
 }

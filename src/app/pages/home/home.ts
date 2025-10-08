@@ -53,23 +53,21 @@ export class Home {
       const weatherData = this.weatherData();
       const hasError = this.hasError();
       const isLoading = this.isLoading();
-      
+
       if (weatherData && !hasError && !isLoading) {
-
-        const desc = weatherData.weather[0].description;
-
-        if (desc.includes('cloud') || desc.includes('rain') || desc.includes('storm') ||desc.includes('night')){
-          this.backgroundMode.set('dark');
-        } else {
-          this.backgroundMode.set('light');
-        }
         const cityName = globalSearch().toLowerCase();
         const currentStore = globalStore();
-        console.log(weatherData.weather[0].description)
+        
         if (cityName && !currentStore.includes(cityName) && !this.weatherDataResource.value()?.error) {
           globalStore.update(prev => [cityName, ...prev].slice(0, 3));
+          const desc = weatherData.weather[0].description;
+          if (desc.includes('cloud') || desc.includes('rain') || desc.includes('storm') || desc.includes('night')) {
+            this.backgroundMode.set('dark');
+          } else {
+            this.backgroundMode.set('light');
+          }
         }
-
+        
         if (cityName) {
           this.weatherCache.update(cache => ({
             ...cache,

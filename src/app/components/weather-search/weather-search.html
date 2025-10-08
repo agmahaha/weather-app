@@ -9,12 +9,12 @@
                 (blur)="cityName.placeholder='Input City'"   
                 (keyup.enter)="setCity(cityName.value); cityName.value=''" 
                 class ="h-8 w-full min-w-0 px-3 text-base border border-gray-400 rounded"/>
-        <div class="ml-8 hidden md:block">
+        <div class="ml-8 hidden md:block **:bg-white">
             <p-selectbutton 
             [(ngModel)]="selectedButton" 
             (ngModelChange)="onUnitChange($event)"
             [options]="selectButtonValues" optionLabel="name" [unselectable]="true"
-            class=""/> 
+            class="**:bg-white"/> 
         </div>      
     </div>  
     <div class="block md:hidden mt-2 flex justify-center">

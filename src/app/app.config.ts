@@ -17,8 +17,11 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     providePrimeNG({
       theme: {
-                preset: Noir,
-            }
+        preset: Noir,
+        options: {
+          darkModeSelector: false || 'none'
+        }
+      }
     })
   ],
 };
